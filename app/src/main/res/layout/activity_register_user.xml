@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_700">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="200dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/white"
+
+            >
+
+        </ImageView>
+        <Button
+            android:id="@+id/brs_image"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+
+            android:text="Browse"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:layout_marginTop="25dp"
+            android:gravity="center_horizontal"
+            >
+
+            <EditText
+                android:id="@+id/PERSON"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_person"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                tools:layout_editor_absoluteX="81dp"
+                tools:layout_editor_absoluteY="252dp"
+                android:hint="Name"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/Password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_lock"
+                android:ems="10"
+                android:inputType="textPassword"
+                tools:layout_editor_absoluteX="81dp"
+                tools:layout_editor_absoluteY="343dp"
+                android:hint="passward"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/user_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_iphone"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                tools:layout_editor_absoluteX="81dp"
+                tools:layout_editor_absoluteY="252dp"
+                android:hint="Phone no."
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/user_CNIC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_card"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                tools:layout_editor_absoluteX="81dp"
+                tools:layout_editor_absoluteY="252dp"
+                android:hint="CNIC no."
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/for_reg_bottum"
+            >
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/redio_group">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Builder"
+                    android:textSize="20dp"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textSize="20dp"/>
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            >
+
+            <Button
+                android:id="@+id/REG"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="REGISTER"
+                android:background="@color/teal_200"
+                tools:layout_editor_absoluteX="132dp"
+                tools:layout_editor_absoluteY="509dp"
+                tools:ignore="MissingConstraints" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
