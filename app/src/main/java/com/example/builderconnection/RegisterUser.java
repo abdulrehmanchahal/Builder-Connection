@@ -1,20 +1,37 @@
 package com.example.builderconnection;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -23,8 +40,12 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.InputStream;
+import java.util.Random;
 
 public class RegisterUser extends AppCompatActivity {
+
+
+
 
     EditText name, pass, phone_no, CNIC_no;
     ImageView img;
@@ -38,6 +59,14 @@ public class RegisterUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
         getSupportActionBar().hide();
+
+        pass = findViewById(R.id.Password);
+        phone_no = findViewById(R.id.user_contact);
+        name = findViewById(R.id.PERSON);
+        CNIC_no = findViewById(R.id.user_CNIC);
+
+
+
 
         img = findViewById(R.id.user_image);
         register = findViewById(R.id.REG);
@@ -72,10 +101,23 @@ public class RegisterUser extends AppCompatActivity {
 
 
         register.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                openRecycler();
-                uploadonfirebase();
+
+                String name_text = name.getText().toString();
+                String pass_text = pass.getText().toString();
+                String phone_text = phone_no.getText().toString();
+                String CNIC_text = CNIC_no.getText().toString();
+
+                if(name_text.isEmpty() || pass_text.isEmpty() || phone_text.isEmpty() || CNIC_text.isEmpty()){
+                    Toast.makeText(RegisterUser.this,"Please fill all fields",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    openRecycler();
+                    uploadonfirebase();
+                }
+
             }
         });
     }
@@ -97,6 +139,11 @@ public class RegisterUser extends AppCompatActivity {
 
     private void uploadonfirebase(){
 
+
+        ProgressDialog dialog=new ProgressDialog(this);
+        dialog.setTitle("File Uploader");
+        dialog.show();
+
         name = findViewById(R.id.PERSON);
         pass = findViewById(R.id.Password);
         phone_no = findViewById(R.id.user_contact);
@@ -104,6 +151,46 @@ public class RegisterUser extends AppCompatActivity {
 
 
 
+        FirebaseStorage storage=FirebaseStorage.getInstance();
+        StorageReference uploader=storage.getReference("Image1" + new Random().nextInt(50));
+
+        uploader.putFile(filepath)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                        uploader.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+
+                                dialog.dismiss();
+                                FirebaseDatabase db=FirebaseDatabase.getInstance();
+                                DatabaseReference root=db.getReference("users");
+
+                                Dataholder obj=new Dataholder(name.getText().toString(),pass.getText().toString(),phone_no.getText().toString(),CNIC_no.getText().toString(),uri.toString());
+                                root.child(phone_no.getText().toString()).setValue(obj);
+
+                                name.setText("");
+                                pass.setText("");
+                                phone_no.setText("");
+                                CNIC_no.setText("");
+                                img.setImageResource(R.drawable.ic_iamge1);
+                                Toast.makeText(getApplicationContext(),"Uploaded", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+
+                    }
+                })
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                        float percent=(100*taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+                        dialog.setMessage("uploaded :"+(int)percent+" %");
+
+                    }
+                });
     }
 
 

@@ -17,6 +17,7 @@
             android:id="@+id/user_image"
             android:layout_width="200dp"
             android:layout_height="180dp"
+            app:srcCompat="@drawable/ic_iamge1"
             android:layout_marginTop="50dp"
             android:background="@color/white"
 
@@ -177,7 +178,17 @@
                 tools:ignore="MissingConstraints" />
 
 
+
+
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+           />
 
     </LinearLayout>
 

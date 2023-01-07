@@ -9,28 +9,21 @@
     android:id="@+id/main_layout">
 
 
-
-
-
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints">
-
-
-
-
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="29dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
             android:layout_marginTop="150dp"
-            >
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,18 +34,17 @@
             </TextView>
 
             <EditText
-                android:id="@+id/user_name"
+                android:id="@+id/user_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_person"
+                android:drawableStart="@drawable/ic_iphone"
                 android:ems="10"
-                android:hint="Name"
-                android:textColor="@color/black"
+                android:hint="Phone no."
                 android:inputType="textEmailAddress"
+                android:textColor="@color/black"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="81dp"
                 tools:layout_editor_absoluteY="252dp" />
-
 
 
         </LinearLayout>
@@ -78,8 +70,8 @@
                 android:drawableStart="@drawable/ic_lock"
                 android:ems="10"
                 android:hint="Password"
-                android:textColor="@color/black"
                 android:inputType="textPassword"
+                android:textColor="@color/black"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="81dp"
                 tools:layout_editor_absoluteY="343dp" />
@@ -88,12 +80,9 @@
         </LinearLayout>
 
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
 
         </LinearLayout>
@@ -102,8 +91,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            >
+            android:layout_marginTop="20dp">
 
 
             <TextView
@@ -113,8 +101,6 @@
                 android:textSize="30dp">
 
             </TextView>
-
-
 
 
             <Button
@@ -132,14 +118,11 @@
         </LinearLayout>
 
 
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            >
+            android:layout_marginTop="20dp">
+
             <TextView
                 android:layout_width="72dp"
                 android:layout_height="45dp"
@@ -153,8 +136,8 @@
 
                 android:drawableStart="@drawable/ic_fingerprint"
                 android:text="  Biometric Login"
-                android:textSize="30dp"
-                android:textColor="@color/black">
+                android:textColor="@color/black"
+                android:textSize="30dp">
 
             </TextView>
 
@@ -174,8 +157,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            >
+            android:layout_marginTop="20dp">
+
             <TextView
                 android:layout_width="70dp"
                 android:layout_height="70dp">
@@ -187,9 +170,8 @@
                 android:layout_width="155dp"
                 android:layout_height="50dp"
                 android:text="Don't have an account"
-                android:textSize="15dp"
                 android:textColor="@color/black"
-                >
+                android:textSize="15dp">
 
             </TextView>
 
@@ -197,7 +179,7 @@
                 android:id="@+id/register"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
-                android:text="Register"
+                android:text="SIGNUP"
                 android:textColor="@color/black">
 
             </Button>
@@ -207,21 +189,8 @@
 
 
 
+
     </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

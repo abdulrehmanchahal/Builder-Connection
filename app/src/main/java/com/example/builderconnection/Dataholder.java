@@ -1,12 +1,12 @@
 package com.example.builderconnection;
 
 public class Dataholder {
-    String name, pass, phome_no, CNIC_no, pimage;
+    String name, pass, phone_no, CNIC_no, pimage;
 
     public Dataholder(String name, String pass, String phome_no, String CNIC_no, String pimage) {
         this.name = name;
         this.pass = pass;
-        this.phome_no = phome_no;
+        this.phone_no = phome_no;
         this.CNIC_no = CNIC_no;
         this.pimage = pimage;
     }
@@ -32,11 +32,11 @@ public class Dataholder {
     }
 
     public String getPhome_no() {
-        return phome_no;
+        return phone_no;
     }
 
     public void setPhome_no(String phome_no) {
-        this.phome_no = phome_no;
+        this.phone_no = phome_no;
     }
 
     public String getCNIC_no() {

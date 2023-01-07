@@ -19,18 +19,22 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity {
 
-    ///**FINGERPRINT***///
 
 
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://builder-connection-c3d73-default-rtdb.firebaseio.com/");
 
 
-
-
-    EditText editText_name, editText_pass;
+    EditText editText_phone, editText_pass;
     Button btnlogin, btnregister;
     Switch aSwitch;
 
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnlogin = findViewById(R.id.login);
         btnregister = findViewById(R.id.register);
-        editText_name = findViewById(R.id.user_name);
+        editText_phone = findViewById(R.id.user_phone);
         editText_pass = findViewById(R.id.Password);
         aSwitch = findViewById(R.id.print_switch);
 
@@ -56,8 +60,51 @@ public class MainActivity extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String phone_text = editText_phone.getText().toString();
+                String pass_text = editText_pass.getText().toString();
 
-                openRecycler();
+
+                if(phone_text.isEmpty() || pass_text.isEmpty()){
+
+                    Toast.makeText(MainActivity.this,"Please enter phone no. or password",Toast.LENGTH_LONG).show();
+
+
+                }
+                else{
+                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(phone_text)){
+                                String get_pass = snapshot.child(phone_text).child("pass").getValue(String.class);
+                                if(get_pass.equals(pass_text)){
+                                    Toast.makeText(MainActivity.this,"Successfully logged in",Toast.LENGTH_LONG).show();
+
+                                    openRecycler();
+
+
+                                }
+                                else {
+                                    Toast.makeText(MainActivity.this,"Wrong password",Toast.LENGTH_LONG).show();
+
+                                }
+                            }
+                            else {
+                                Toast.makeText(MainActivity.this,"Wrong Phone no.",Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
+
+
+
+
 
 
             }
