@@ -172,7 +172,11 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 notifyUser("Succeeded");
-                openRecycler();
+
+                RecyclerFragment recyclerFragment = new RecyclerFragment();
+                replacefragment(recyclerFragment);
+
+                //openRecycler();
 
             }
 

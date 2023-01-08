@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoFragment"
-    android:background="@color/teal_700">
+    android:background="@drawable/b2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,9 +25,10 @@
             android:layout_marginTop="10dp"
             android:id="@+id/passholder"
             android:text="Candidate Name"
+
             android:textSize="25sp"
             android:textStyle="bold"
-            android:textColor="#000"/>
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
             android:id="@+id/nameholder"
             android:text="Candidate Course"
             android:textSize="25sp"
-            android:textColor="#000"/>
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,6 +46,6 @@
             android:id="@+id/phoneholder"
             android:text="Candidate Email"
             android:textSize="25sp"
-            android:textColor="#000"/>
+            android:textColor="@color/white"/>
     </LinearLayout>
 </FrameLayout>
