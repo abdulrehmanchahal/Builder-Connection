@@ -79,7 +79,10 @@ public class MainActivity extends AppCompatActivity {
                                 if(get_pass.equals(pass_text)){
                                     Toast.makeText(MainActivity.this,"Successfully logged in",Toast.LENGTH_LONG).show();
 
-                                    openRecycler();
+
+                                    RecyclerFragment recyclerFragment = new RecyclerFragment();
+                                    replacefragment(recyclerFragment);
+                                    //openRecycler();
 
 
                                 }

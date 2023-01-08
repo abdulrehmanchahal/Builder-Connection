@@ -3,6 +3,9 @@ package com.example.builderconnection;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -114,7 +117,10 @@ public class RegisterUser extends AppCompatActivity {
                     Toast.makeText(RegisterUser.this,"Please fill all fields",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    openRecycler();
+
+                    RecyclerFragment recyclerFragment = new RecyclerFragment();
+                    replacefragment(recyclerFragment);
+                   // openRecycler();
                     uploadonfirebase();
                 }
 
@@ -199,4 +205,10 @@ public class RegisterUser extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void replacefragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_layout,fragment);
+        fragmentTransaction.commit();
+    }
 }
