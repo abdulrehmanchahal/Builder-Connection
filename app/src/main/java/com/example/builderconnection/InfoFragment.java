@@ -81,6 +81,6 @@ public class InfoFragment extends Fragment {
 
     public void onbackpress(){
         AppCompatActivity activity = (AppCompatActivity)getContext();
-        activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,new RecyclerFragment()).addToBackStack(null).commit();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_layout_rec,new RecyclerFragment()).addToBackStack(null).commit();
     }
 }

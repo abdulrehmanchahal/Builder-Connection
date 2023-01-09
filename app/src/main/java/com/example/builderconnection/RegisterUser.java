@@ -50,9 +50,9 @@ public class RegisterUser extends AppCompatActivity {
 
 
 
-    EditText name, pass, phone_no, CNIC_no;
-    ImageView img;
-    Button register, browse;
+    EditText name, pass, phone_no, CNIC_no, user_type, work_det;
+    ImageView img, work_img1, work_img2;
+    Button register, browse,btn_img_1, btn_img_2;
     Uri filepath;
     Bitmap bitmap;
 
@@ -67,13 +67,19 @@ public class RegisterUser extends AppCompatActivity {
         phone_no = findViewById(R.id.user_contact);
         name = findViewById(R.id.PERSON);
         CNIC_no = findViewById(R.id.user_CNIC);
+        user_type = findViewById(R.id.user_type);
+        work_det = findViewById(R.id.uer_info);
 
 
 
 
         img = findViewById(R.id.user_image);
+        work_img1 = findViewById(R.id.builder_work_img1);
+        work_img2 = findViewById(R.id.builder_work_img2);
         register = findViewById(R.id.REG);
         browse = findViewById(R.id.brs_image);
+        btn_img_1 = findViewById(R.id.btn_wrk_img_1);
+        btn_img_2 = findViewById(R.id.btn_wrk_img_2);
 
         browse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +109,8 @@ public class RegisterUser extends AppCompatActivity {
         });
 
 
+
+
         register.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -118,10 +126,12 @@ public class RegisterUser extends AppCompatActivity {
                 }
                 else {
 
+                    uploadonfirebase();
                     RecyclerFragment recyclerFragment = new RecyclerFragment();
                     replacefragment(recyclerFragment);
-                   // openRecycler();
-                    uploadonfirebase();
+
+
+                    // openRecycler();
                 }
 
             }
@@ -208,7 +218,7 @@ public class RegisterUser extends AppCompatActivity {
     private void replacefragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main_layout,fragment);
+        fragmentTransaction.replace(R.id.rec_fragment,fragment);
         fragmentTransaction.commit();
     }
 }

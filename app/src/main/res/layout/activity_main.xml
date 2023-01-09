@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-
-    android:id="@+id/main_layout"
-    android:background="@drawable/b2">
+    android:id="@+id/main_layout_rec"
+    android:background="@color/cardview_dark_background">
 
 
     <LinearLayout
